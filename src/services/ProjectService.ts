@@ -1,5 +1,4 @@
 import { Project } from "../models/Project";
-import { ProjectTech } from "../models/ProjectTech";
 
 export class ProjectService {
     private static projectIdCounter = 1;
@@ -38,7 +37,7 @@ export class ProjectService {
                 },
                 {
                     id: ProjectService.projectTechIdCounter++,
-                    name: "Boostrap",
+                    name: "Bootstrap",
                     order: 6
                 },
             ],
