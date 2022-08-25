@@ -1,43 +1,44 @@
 import { Project } from "../models/Project";
+import { SkillGroup } from "../models/SkillGroup";
 import { WorkExperience } from "../models/WorkExperience";
 
-export class ProjectService {
+export class PortfolioService {
     private static projectIdCounter = 1;
     private static projectTechIdCounter = 1;
 
     private static readonly projects : Project[] = [
         {
-            id: ProjectService.projectIdCounter++, 
+            id: PortfolioService.projectIdCounter++, 
             title: "ImageConverter",
             description: "A console and web application that converts images from one format to another. Both projects utilize a shared .NET standard library.",
             tech: [ 
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "C#",
                     order: 1
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: ".NET 6",
                     order: 2
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: ".NET MVC",
                     order: 3
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "NUnit",
                     order: 4
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "Moq",
                     order: 5
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "Bootstrap",
                     order: 6
                 },
@@ -46,17 +47,17 @@ export class ProjectService {
             imageLinks: []
         },
         {
-            id: ProjectService.projectIdCounter++, 
+            id: PortfolioService.projectIdCounter++, 
             title: "Password Generator React",
             description: "A React application that allows you to generate a random password.",
             tech: [ 
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "React",
                     order: 1
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "React Hooks",
                     order: 2
                 },
@@ -65,12 +66,12 @@ export class ProjectService {
             imageLinks: []
         },
         {
-            id: ProjectService.projectIdCounter++, 
+            id: PortfolioService.projectIdCounter++, 
             title: "Password Generator App",
             description: "A Xamarin mobile application for Android allows you to generate a random password.",
             tech: [ 
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "Xamarin Forms",
                     order: 1
                 }
@@ -79,32 +80,32 @@ export class ProjectService {
             imageLinks: []
         },
         {
-            id: ProjectService.projectIdCounter++, 
+            id: PortfolioService.projectIdCounter++, 
             title: "Restaurant Website",
             description: "A website made using .NET MVC for a fictional restaurant. Has a manager portal with the ability for managers to add food and specials.",
             tech: [ 
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "ASP.NET MVC",
                     order: 1
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "ASP.NET Identity",
                     order: 2,
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "Entity Framework",
                     order: 3,
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "Microsoft SQL",
                     order: 4,
                 },
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "Bootstrap",
                     order: 5,
                 },
@@ -113,12 +114,12 @@ export class ProjectService {
             imageLinks: []
         },
         {
-            id: ProjectService.projectIdCounter++, 
+            id: PortfolioService.projectIdCounter++, 
             title: "Hangman React",
             description: "A hangman game implemented using React",
             tech: [ 
                 {
-                    id: ProjectService.projectTechIdCounter++,
+                    id: PortfolioService.projectTechIdCounter++,
                     name: "React",
                     order: 1
                 },
@@ -184,11 +185,151 @@ export class ProjectService {
         }
     ];
 
+    private static skillGroupCounter = 1;
+    private static skillCounter = 1;
+
+    private static readonly skillGroups : SkillGroup[] = [
+        {
+            id: this.skillGroupCounter++,
+            name: "Backend",
+            order: 1,
+            skills: [
+                {
+                    id: this.skillCounter++,
+                    name: "C#",
+                    order: 1,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "SQL",
+                    order: 2,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "SQL Server Reporting Services (SSRS)",
+                    order: 3,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "Web API 2",
+                    order: 4,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: ".NET MVC",
+                    order: 5,
+                },
+            ]
+        },
+        {
+            id: this.skillGroupCounter++,
+            name: "Frontend",
+            order: 2,
+            skills: [
+                {
+                    id: this.skillCounter++,
+                    name: "React",
+                    order: 4,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "Bootstrap",
+                    order: 5,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "HTML",
+                    order: 1,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "CSS",
+                    order: 2,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "JavaScript",
+                    order: 3,
+                },
+            ]
+        },
+        {
+            id: this.skillGroupCounter++,
+            name: "Unit Testing",
+            order: 3,
+            skills: [
+                {
+                    id: this.skillCounter++,
+                    name: "Dependency Injection",
+                    order: 1,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "NUnit",
+                    order: 2,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "Moq",
+                    order: 3,
+                }
+            ]
+        },
+        {
+            id: this.skillGroupCounter++,
+            name: "Source Control",
+            order: 4,
+            skills: [
+                {
+                    id: this.skillCounter++,
+                    name: "Azure DevOps",
+                    order: 1,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "Git",
+                    order: 2,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "TFS",
+                    order: 3,
+                }
+            ]
+        },
+        {
+            id: this.skillGroupCounter++,
+            name: "External Integrations",
+            order: 5,
+            skills: [
+                {
+                    id: this.skillCounter++,
+                    name: "Active Directory",
+                    order: 1,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "Exchange",
+                    order: 2,
+                },
+                {
+                    id: this.skillCounter++,
+                    name: "CXT (Logistics Software)",
+                    order: 3,
+                }
+            ]
+        },
+    ];
+
     getProjects() : Project[] {
-        return ProjectService.projects;
+        return PortfolioService.projects;
     }
 
     getWorkExperiences() : WorkExperience[] {
-        return ProjectService.workExperiences
+        return PortfolioService.workExperiences
+    }
+
+    getSkillGroups() : SkillGroup[] {
+        return PortfolioService.skillGroups;
     }
 }

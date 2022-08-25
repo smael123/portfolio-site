@@ -11,7 +11,9 @@ export const Project:FC<ProjectObject> = ({ title, description, tech, imageLinks
         <h2>{title}</h2>
         <p>{description}</p>
         <h3>Tech</h3>
-        {orderedTech.map(projectTech => <li key={projectTech.id}>{projectTech.name}</li>)}
+        <ul>
+            {orderedTech.map(projectTech => <li key={projectTech.id}>{projectTech.name}</li>)}
+        </ul>
         {orderedImageLinks.length > 0 && 
             <>
                 <h3>Image Gallery</h3>
