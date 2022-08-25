@@ -1,6 +1,7 @@
 import { Project } from "../models/Project";
 import { SkillGroup } from "../models/SkillGroup";
 import { WorkExperience } from "../models/WorkExperience";
+import { WorkProject } from "../models/WorkProject";
 
 export class PortfolioService {
     private static projectIdCounter = 1;
@@ -9,7 +10,7 @@ export class PortfolioService {
     private static readonly projects : Project[] = [
         {
             id: PortfolioService.projectIdCounter++, 
-            title: "ImageConverter",
+            title: "Image Converter",
             description: "A console and web application that converts images from one format to another. Both projects utilize a shared .NET standard library.",
             tech: [ 
                 {
@@ -127,7 +128,7 @@ export class PortfolioService {
             sourceCodeLink: "https://github.com/smael123/HangmanReact",
             imageLinks: []
         },
-    ]
+    ];
 
     private static workExperienceCounter = 1;
     private static workResponsibiltyCounter = 1;
@@ -321,6 +322,138 @@ export class PortfolioService {
         },
     ];
 
+    private static workProjectIdCounter = 1;
+    private static workProjectTechIdCounter = 1;
+
+    private static readonly workProjects : WorkProject[] = [
+        {
+            id: PortfolioService.workProjectIdCounter++, 
+            title: "Employee Onboarding Application",
+            companyName: "BakerRipley",
+            description: "Worked on a general refactor of our Employee Onboarding application. Moved logic that talked to external systems (e.g. Active Directory, Exchange Server, network drives) to its own classes. This refactor reduced the development time needed when we switched over from on premises Exchange Online.",
+            tech: [ 
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "C#",
+                    order: 1
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "PowerShell",
+                    order: 2
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "SQL",
+                    order: 3
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Active Directory",
+                    order: 4
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Exchange",
+                    order: 5
+                }
+            ],
+            imageLinks: []
+        },
+        {
+            id: PortfolioService.workProjectIdCounter++,
+            title: "Client Portal Application",
+            companyName: "Diligent Delivery Systems",
+            description: "Re-engineered our current network delivery portal with a .NET Web API 2 backend and a React frontend. Converted stored procedure and code-file SQL queries to Entity Framework methods. Also directed junior developers by assigning them a set of the application’s features and conveying the requirements via written documentation and oral conversations.",
+            tech: [ 
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: ".NET Web API 2",
+                    order: 1
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "React",
+                    order: 2
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Entity Framework",
+                    order: 3
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Bootstrap",
+                    order: 4
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Nlog",
+                    order: 5
+                },
+            ],
+            imageLinks: []
+        },
+        {
+            id: PortfolioService.workProjectIdCounter++, 
+            title: "Reschedule Application",
+            companyName: "Diligent Delivery Systems",
+            description: "Designed a mobile friendly web application to allow our employees to reschedule deliveries on the warehouse. This reduced the overall process time by eliminating the need to reschedule it on the desktop only web application.",
+            tech: [ 
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: ".NET Web API 2",
+                    order: 1
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "React",
+                    order: 2
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Entity Framework",
+                    order: 3
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Bootstrap",
+                    order: 4
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Nlog",
+                    order: 5
+                },
+            ],
+            imageLinks: []
+        },
+        {
+            id: PortfolioService.workProjectIdCounter++, 
+            title: "Live Tracking Service",
+            companyName: "Diligent Delivery Systems",
+            description: "Designed a Windows service that periodically sends package scan updates to an external logistics system.",
+            tech: [ 
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Entity Framework",
+                    order: 1
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "Nlog",
+                    order: 2,
+                },
+                {
+                    id: PortfolioService.workProjectTechIdCounter++,
+                    name: "CXT (Logistics Software)",
+                    order: 3,
+                },
+            ],
+            imageLinks: []
+        }
+    ];
+
     getProjects() : Project[] {
         return PortfolioService.projects;
     }
@@ -331,5 +464,9 @@ export class PortfolioService {
 
     getSkillGroups() : SkillGroup[] {
         return PortfolioService.skillGroups;
+    }
+
+    getWorkProjects() : WorkProject[] {
+        return PortfolioService.workProjects;
     }
 }
