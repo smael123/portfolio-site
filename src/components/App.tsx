@@ -8,12 +8,19 @@ import { SkillGroup } from "../models/SkillGroup";
 import { SkillTree } from "./SkillTree";
 import { WorkProject as WorkProjectObject } from "../models/WorkProject";
 import { WorkProject as WorkProjectComponent } from "./WorkProject";
+import { Introduction } from "./Introduction";
+import { PortfolioPersonProfile } from "../models/PortfolioPersonProfile";
 
 function App() : JSX.Element {
   const [projects, setProjects] = useState<ProjectObject[]>([]);
   const [workExperiences, setWorkExperiences] = useState<WorkExperienceObject[]>([]);
   const [skillGroups, setSkillGroups] = useState<SkillGroup[]>([]);
   const [workProjects, setWorkProjects] = useState<WorkProjectObject[]>([]);
+  const [portfolioPersonProfile, setPortfolioPersonProfile] = useState<PortfolioPersonProfile>({
+      name: "LOADING",
+      careerTitle: "LOADING",
+      profileLinks: []
+  })
 
   useEffect(() => {
     const portfolioService = new PortfolioService();
@@ -25,10 +32,12 @@ function App() : JSX.Element {
     setWorkExperiences(orderedWorkExperiences);
     setSkillGroups(portfolioService.getSkillGroups());
     setWorkProjects(portfolioService.getWorkProjects());
+    setPortfolioPersonProfile(portfolioService.getPortfolioPersonProfile());
   }, [])
 
   return (
-    <div>
+    <>
+      <Introduction {...portfolioPersonProfile} />
       <h1>Skills</h1>
       <SkillTree skillGroups={skillGroups} />
       <h1>Projects</h1>
@@ -37,7 +46,7 @@ function App() : JSX.Element {
       {workExperiences.map(workExperience => <WorkExperienceComponent key={workExperience.id} {...workExperience} />)}
       <h1>Work Projects</h1>
       {workProjects.map(project => <WorkProjectComponent key={project.id} {...project} />)}
-    </div>
+    </>
   );
 }
 

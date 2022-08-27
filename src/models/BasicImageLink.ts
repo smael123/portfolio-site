@@ -1,6 +1,6 @@
 import { DatabaseDto } from "./DatabaseDto";
 
-export interface ProjectImageLink extends DatabaseDto {
+export interface BasicImageLink extends DatabaseDto {
     src : string;
     order: number;
     alt: string;

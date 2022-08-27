@@ -1,3 +1,4 @@
+import { PortfolioPersonProfile } from "../models/PortfolioPersonProfile";
 import { Project } from "../models/Project";
 import { SkillGroup } from "../models/SkillGroup";
 import { WorkExperience } from "../models/WorkExperience";
@@ -44,8 +45,27 @@ export class PortfolioService {
                     order: 6
                 },
             ],
-            sourceCodeLink: "https://github.com/smael123/ImageConverter",
-            imageLinks: []
+            projectLinks: [
+                {
+                    href: "https://github.com/smael123/ImageConverter",
+                    displayText: "Source Code",
+                    order: 1
+                }
+            ],
+            imageLinks: [
+                { 
+                    id: 1,
+                    src: "https://upload.wikimedia.org/wikipedia/en/a/a5/Jackoneill.jpg",
+                    order: 1,
+                    alt: "test1"
+                },
+                { 
+                    id: 2,
+                    src: "https://upload.wikimedia.org/wikipedia/en/a/a5/Jackoneill.jpg",
+                    order: 2,
+                    alt: "test2"
+                }
+            ]
         },
         {
             id: PortfolioService.projectIdCounter++, 
@@ -63,8 +83,13 @@ export class PortfolioService {
                     order: 2
                 },
             ],
-            sourceCodeLink: "https://github.com/smael123/PasswordGeneratorReact",
-            imageLinks: []
+            projectLinks: [
+                {
+                    href: "https://github.com/smael123/PasswordGeneratorReact",
+                    displayText: "Source Code",
+                    order: 1
+                }
+            ]
         },
         {
             id: PortfolioService.projectIdCounter++, 
@@ -77,7 +102,13 @@ export class PortfolioService {
                     order: 1
                 }
             ],
-            sourceCodeLink: "https://github.com/smael123/PasswordGeneratorApp",
+            projectLinks: [
+                {
+                    href: "https://github.com/smael123/PasswordGeneratorApp",
+                    displayText: "Source Code",
+                    order: 1
+                }
+            ],
             imageLinks: []
         },
         {
@@ -111,8 +142,13 @@ export class PortfolioService {
                     order: 5,
                 },
             ],
-            sourceCodeLink: "https://github.com/smael123/RestaurantWebsite",
-            imageLinks: []
+            projectLinks: [
+                {
+                    href: "https://github.com/smael123/RestaurantWebsite",
+                    displayText: "Source Code",
+                    order: 1
+                }
+            ]
         },
         {
             id: PortfolioService.projectIdCounter++, 
@@ -125,8 +161,13 @@ export class PortfolioService {
                     order: 1
                 },
             ],
-            sourceCodeLink: "https://github.com/smael123/HangmanReact",
-            imageLinks: []
+            projectLinks: [
+                {
+                    href: "https://github.com/smael123/HangmanReact",
+                    displayText: "Source Code",
+                    order: 1
+                }
+            ]
         },
     ];
 
@@ -357,8 +398,7 @@ export class PortfolioService {
                     name: "Exchange",
                     order: 5
                 }
-            ],
-            imageLinks: []
+            ]
         },
         {
             id: PortfolioService.workProjectIdCounter++,
@@ -391,8 +431,7 @@ export class PortfolioService {
                     name: "Nlog",
                     order: 5
                 },
-            ],
-            imageLinks: []
+            ]
         },
         {
             id: PortfolioService.workProjectIdCounter++, 
@@ -425,8 +464,7 @@ export class PortfolioService {
                     name: "Nlog",
                     order: 5
                 },
-            ],
-            imageLinks: []
+            ]
         },
         {
             id: PortfolioService.workProjectIdCounter++, 
@@ -449,8 +487,7 @@ export class PortfolioService {
                     name: "CXT (Logistics Software)",
                     order: 3,
                 },
-            ],
-            imageLinks: []
+            ]
         }
     ];
 
@@ -468,5 +505,30 @@ export class PortfolioService {
 
     getWorkProjects() : WorkProject[] {
         return PortfolioService.workProjects;
+    }
+
+    getPortfolioPersonProfile() : PortfolioPersonProfile {
+        return ({
+            name: "Ismael Almaguer",
+            careerTitle: "Full Stack Web Developer",
+            pictureSrc: "https://upload.wikimedia.org/wikipedia/en/a/a5/Jackoneill.jpg",
+            profileLinks: [
+                {
+                    displayText: "Résumé",
+                    href: "https://example.com",
+                    order: 1
+                },
+                {
+                    displayText: "LinkedIn",
+                    href: "https://example.com",
+                    order: 2
+                },
+                {
+                    displayText: "GitHub",
+                    href: "https://example.com",
+                    order: 3
+                },
+            ]
+        })
     }
 }

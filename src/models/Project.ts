@@ -1,12 +1,12 @@
+import { BasicHyperLink } from "./BasicHyperlink";
 import { DatabaseDto } from "./DatabaseDto";
-import { ProjectImageLink } from "./ProjectImageLink";
+import { BasicImageLink } from "./BasicImageLink";
 import { ProjectTech } from "./ProjectTech";
 
 export interface Project extends DatabaseDto {
     title : string;
     description : string;
     tech : ProjectTech[];
-    imageLinks: ProjectImageLink[];
-    sourceCodeLink? : string;
-    demoLink? : string;
+    imageLinks?: BasicImageLink[];
+    projectLinks?: BasicHyperLink[];
 }
