@@ -12,7 +12,7 @@ export const ImageGallery:FC<ImageGalleryProps> = ({ mainCaption, imageLinks }) 
         <>
             {mainCaption}
             <div className='project-gallery'>
-                {imageLinks.map(imageLink => <img key={imageLink.id} alt={imageLink.alt} src={imageLink.src} />)}
+                {imageLinks.map(imageLink => <img key={imageLink.src} alt={imageLink.alt} src={imageLink.src} />)}
             </div>
         </>
     )

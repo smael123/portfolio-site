@@ -10,15 +10,14 @@ export const LinkList:FC<LinkListProps> = ({ hyperlinks }) => {
         <>
             {hyperlinks.map((hyperlink, index) => 
                 (
-                    <>
+                    <span key={hyperlink.displayText}>
                         <a 
-                            key={hyperlink.displayText} 
                             href={hyperlink.href} 
                             target="_blank" 
                             rel="noopener noreferrer">
                             {hyperlink.displayText}
                         </a>{index + 1 < hyperlinks.length && " | "}
-                    </>
+                    </span>
                 )
             )}
         </>

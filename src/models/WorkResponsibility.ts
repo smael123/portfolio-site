@@ -1,6 +1,4 @@
-import { DatabaseDto } from "./DatabaseDto";
-
-export interface WorkResponsibility extends DatabaseDto {
+export interface WorkResponsibility {
     description : string;
     order: number;
 }

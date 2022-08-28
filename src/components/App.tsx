@@ -17,6 +17,7 @@ function App() : JSX.Element {
   const [skillGroups, setSkillGroups] = useState<SkillGroup[]>([]);
   const [workProjects, setWorkProjects] = useState<WorkProjectObject[]>([]);
   const [portfolioPersonProfile, setPortfolioPersonProfile] = useState<PortfolioPersonProfile>({
+      id: 1,
       name: "LOADING",
       careerTitle: "LOADING",
       profileLinks: []

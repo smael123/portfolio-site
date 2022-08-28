@@ -8,7 +8,7 @@ export const SkillBranch:FC<SkillGroup> = ({ name, skills }) => {
        <>
         <h2>{name}</h2>
         <ul>
-            {orderedSkills.map(skill => <li key={skill.id}>{skill.name}</li>)}
+            {orderedSkills.map(skill => <li key={skill.name}>{skill.name}</li>)}
         </ul>
        </>
     )

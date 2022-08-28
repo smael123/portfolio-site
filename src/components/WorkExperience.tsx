@@ -16,7 +16,7 @@ export const WorkExperience:FC<WorkExperienceObject> = ({ companyName, city, sta
             {city}, {state} {dateFormatter.format(startDate)} - {endDate ? dateFormatter.format(endDate) : "present"}
             <p><em>{title}</em></p>
             <ul>
-                {orderedResponsibilities.map(responsibility => <li key={responsibility.id}>{responsibility.description}</li>)}
+                {orderedResponsibilities.map(responsibility => <li key={responsibility.description}>{responsibility.description}</li>)}
             </ul>
         </>
     )

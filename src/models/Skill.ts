@@ -1,6 +1,4 @@
-import { DatabaseDto } from "./DatabaseDto";
-
-export interface Skill extends DatabaseDto {
+export interface Skill {
     name : string;
     order: number;
 }
