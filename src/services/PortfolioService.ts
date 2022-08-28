@@ -1,3 +1,4 @@
+import { EducationExperience } from "../models/EducationExperience";
 import { PortfolioPersonProfile } from "../models/PortfolioPersonProfile";
 import { Project } from "../models/Project";
 import { SkillGroup } from "../models/SkillGroup";
@@ -467,5 +468,36 @@ export class PortfolioService {
                 },
             ]
         })
+    }
+
+    getEducationExperience() : EducationExperience[] {
+        return [
+            {
+                id: 1,
+                schoolName: "University of Houston-Downtown",
+                degree: "Bachelor of Science in Computer Science",
+                yearOfGraduation: 2017,
+                courses: [
+                    {
+                        name: "Software Engineering",
+                        order: 1
+                    },
+                    {
+                        name: "Data Structures and Algorithms",
+                        order: 2
+                    },
+                    {
+                        name: "Object Oriented Programming",
+                        order: 3
+                    },
+                    {
+                        name: "Database and Warehouses",
+                        order: 4
+                    }
+                ],
+                city: "Houston",
+                state: "TX"
+            }
+        ]
     }
 }

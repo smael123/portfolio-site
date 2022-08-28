@@ -10,6 +10,8 @@ import { WorkProject as WorkProjectObject } from "../models/WorkProject";
 import { WorkProject as WorkProjectComponent } from "./WorkProject";
 import { Introduction } from "./Introduction";
 import { PortfolioPersonProfile } from "../models/PortfolioPersonProfile";
+import { EducationExperience as EducationExperienceObject } from "../models/EducationExperience";
+import { EducationExperience as EducationExperienceComponent } from "./EducationExperience";
 
 function App() : JSX.Element {
   const [projects, setProjects] = useState<ProjectObject[]>([]);
@@ -22,18 +24,23 @@ function App() : JSX.Element {
       careerTitle: "LOADING",
       profileLinks: []
   })
+  const [educationExperiences, setEducationExperiences] = useState<EducationExperienceObject[]>([])
 
   useEffect(() => {
     const portfolioService = new PortfolioService();
 
     const unorderedWorkExperiences = portfolioService.getWorkExperiences();
     const orderedWorkExperiences = unorderedWorkExperiences.sort((workExperienceA, workExperienceB) => workExperienceB.startDate.getTime() - workExperienceA.startDate.getTime());
+    
+    const unorderedEducationExperiences = portfolioService.getEducationExperience();
+    const orderedEducationExperiences = unorderedEducationExperiences.sort((educationExperienceA, educationExperienceB) => educationExperienceB.yearOfGraduation - educationExperienceA.yearOfGraduation);
 
     setProjects(portfolioService.getProjects());
     setWorkExperiences(orderedWorkExperiences);
     setSkillGroups(portfolioService.getSkillGroups());
     setWorkProjects(portfolioService.getWorkProjects());
     setPortfolioPersonProfile(portfolioService.getPortfolioPersonProfile());
+    setEducationExperiences(orderedEducationExperiences);
   }, [])
 
   return (
@@ -41,6 +48,8 @@ function App() : JSX.Element {
       <Introduction {...portfolioPersonProfile} />
       <h1>Skills</h1>
       <SkillTree skillGroups={skillGroups} />
+      <h1>Education</h1>
+      {educationExperiences.map(educationExperience => <EducationExperienceComponent key={educationExperience.id} {...educationExperience} />)}
       <h1>Projects</h1>
       {projects.map(project => <ProjectComponent key={project.id} {...project} />)}
       <h1>Work Experience</h1>
