@@ -11,7 +11,7 @@ export const Introduction:FC<IntroductionProps> = ({ portfolioPersonProfile }) =
 
     return (
         <>
-            <h1>Ismael's Portfolio</h1>
+            <h1>Ismael Almaguer's Portfolio</h1>
             {pictureSrc && <img className='portfolio-picture' src={pictureSrc} alt="My portrait." />}
             <p>My name is {name} and I am a {careerTitle}.</p>
             <LinkList hyperlinks={profileLinks.sort((profileLinkA, profileLinkB) => profileLinkA.order - profileLinkB.order)} />
