@@ -1,7 +1,13 @@
 import { FC } from 'react';
 import { SkillGroup } from '../models/SkillGroup';
 
-export const SkillBranch:FC<SkillGroup> = ({ name, skills }) => {
+interface SkillBranchProps {
+    skillGroup: SkillGroup
+}
+
+export const SkillBranch:FC<SkillBranchProps> = ({ skillGroup }) => {
+    const { name, skills } = skillGroup;
+
     const orderedSkills = skills.sort((skillA, skillB) => skillA.order - skillB.order)
     
     return (

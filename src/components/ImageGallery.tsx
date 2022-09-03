@@ -1,8 +1,9 @@
 import { FC } from "react"
+import { Carousel, CarouselItem } from "react-bootstrap"
 import { BasicImageLink } from "../models/BasicImageLink"
 
 interface ImageGalleryProps {
-    mainCaption: React.ReactNode
+    mainCaption?: React.ReactNode
     imageLinks: BasicImageLink[]
 }
 
@@ -11,9 +12,9 @@ export const ImageGallery:FC<ImageGalleryProps> = ({ mainCaption, imageLinks }) 
     return (
         <>
             {mainCaption}
-            <div className='project-gallery'>
-                {imageLinks.map(imageLink => <img key={imageLink.src} alt={imageLink.alt} src={imageLink.src} />)}
-            </div>
+            <Carousel>
+                {imageLinks.map(imageLink => <CarouselItem key={imageLink.src}><img className="d-block w-100" alt={imageLink.alt} src={imageLink.src} /></CarouselItem>)}
+            </Carousel>
         </>
     )
 }

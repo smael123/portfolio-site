@@ -3,7 +3,6 @@ import { PortfolioPersonProfile } from "../models/PortfolioPersonProfile";
 import { Project } from "../models/Project";
 import { SkillGroup } from "../models/SkillGroup";
 import { WorkExperience } from "../models/WorkExperience";
-import { WorkProject } from "../models/WorkProject";
 
 export class PortfolioService {
     private static projectIdCounter = 1;
@@ -46,16 +45,50 @@ export class PortfolioService {
                     order: 1
                 }
             ],
-            imageLinks: [
-                { 
-                    src: "https://upload.wikimedia.org/wikipedia/en/a/a5/Jackoneill.jpg",
-                    order: 1,
-                    alt: "test1"
+            // imageLinks: [
+            //     { 
+            //         src: "https://upload.wikimedia.org/wikipedia/en/a/a5/Jackoneill.jpg",
+            //         order: 1,
+            //         alt: "test1"
+            //     },
+            //     {
+            //         src: "https://upload.wikimedia.org/wikipedia/en/2/2e/Doctor_Daniel_Jackson_%28Michael_Shanks%292.jpg",
+            //         order: 2,
+            //         alt: "test2"
+            //     }
+            // ]
+        },
+        {
+            id: PortfolioService.projectIdCounter++, 
+            title: "Restaurant Website",
+            description: "A website made using .NET MVC for a fictional restaurant. Has a manager portal with the ability for managers to add food and specials.",
+            tech: [ 
+                {
+                    name: "ASP.NET MVC",
+                    order: 1
                 },
                 {
-                    src: "https://upload.wikimedia.org/wikipedia/en/2/2e/Doctor_Daniel_Jackson_%28Michael_Shanks%292.jpg",
+                    name: "ASP.NET Identity",
                     order: 2,
-                    alt: "test2"
+                },
+                {
+                    name: "Entity Framework",
+                    order: 3,
+                },
+                {
+                    name: "Microsoft SQL",
+                    order: 4,
+                },
+                {
+                    name: "Bootstrap",
+                    order: 5,
+                },
+            ],
+            projectLinks: [
+                {
+                    href: "https://github.com/smael123/RestaurantWebsite",
+                    displayText: "Source Code",
+                    order: 1
                 }
             ]
         },
@@ -99,40 +132,6 @@ export class PortfolioService {
                 }
             ],
             imageLinks: []
-        },
-        {
-            id: PortfolioService.projectIdCounter++, 
-            title: "Restaurant Website",
-            description: "A website made using .NET MVC for a fictional restaurant. Has a manager portal with the ability for managers to add food and specials.",
-            tech: [ 
-                {
-                    name: "ASP.NET MVC",
-                    order: 1
-                },
-                {
-                    name: "ASP.NET Identity",
-                    order: 2,
-                },
-                {
-                    name: "Entity Framework",
-                    order: 3,
-                },
-                {
-                    name: "Microsoft SQL",
-                    order: 4,
-                },
-                {
-                    name: "Bootstrap",
-                    order: 5,
-                },
-            ],
-            projectLinks: [
-                {
-                    href: "https://github.com/smael123/RestaurantWebsite",
-                    displayText: "Source Code",
-                    order: 1
-                }
-            ]
         },
         {
             id: PortfolioService.projectIdCounter++, 
@@ -321,7 +320,7 @@ export class PortfolioService {
 
     private static workProjectIdCounter = 1;
 
-    private static readonly workProjects : WorkProject[] = [
+    private static readonly workProjects : Project[] = [
         {
             id: PortfolioService.workProjectIdCounter++, 
             title: "Employee Onboarding Application",
@@ -440,7 +439,7 @@ export class PortfolioService {
         return PortfolioService.skillGroups;
     }
 
-    getWorkProjects() : WorkProject[] {
+    getWorkProjects() : Project[] {
         return PortfolioService.workProjects;
     }
 
@@ -449,7 +448,7 @@ export class PortfolioService {
             id: 1,
             name: "Ismael Almaguer",
             careerTitle: "Full Stack Web Developer",
-            pictureSrc: "https://upload.wikimedia.org/wikipedia/en/a/a5/Jackoneill.jpg",
+            pictureSrc: "./images/my-picture.jpeg",
             profileLinks: [
                 {
                     displayText: "Résumé",

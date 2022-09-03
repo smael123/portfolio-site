@@ -10,8 +10,8 @@ export const SkillTree:FC<SkillTreeProps> = ({ skillGroups }) => {
     const orderedSkillGroups = skillGroups.sort((skillGroupA, skillGroupB) => skillGroupA.order - skillGroupB.order)
     
     return (
-       <>
-        {orderedSkillGroups.map(skillGroup => <SkillBranch key={skillGroup.id} {...skillGroup} />)}
-       </>
+       <div className='row'>
+        {orderedSkillGroups.map(skillGroup => <div key={skillGroup.id} className="col-md-4"><SkillBranch skillGroup={skillGroup} /></div>)}
+       </div>
     )
 }

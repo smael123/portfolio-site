@@ -9,4 +9,5 @@ export interface Project extends DatabaseDto {
     tech : ProjectTech[];
     imageLinks?: BasicImageLink[];
     projectLinks?: BasicHyperLink[];
+    companyName?: string
 }

@@ -1,0 +1,16 @@
+@media (min-width: 992px) { 
+    .sticky-container {
+        position: sticky;
+        top: 0;
+    }
+ }
+
+.container {
+    padding: 15px;
+}
+
+.portfolio-picture {
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

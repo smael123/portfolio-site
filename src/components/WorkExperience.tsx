@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { WorkExperience as WorkExperienceObject } from "../models/WorkExperience";
+import { WorkExperience as WorkExperienceModel } from "../models/WorkExperience";
 import { WorkResponsibility } from "../models/WorkResponsibility";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -7,17 +7,24 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
     year: "numeric"
 })
 
-export const WorkExperience:FC<WorkExperienceObject> = ({ companyName, city, state, startDate, endDate, title, responsibilities }) => {
+interface WorkExperienceProps {
+    workExperience: WorkExperienceModel
+}
+
+export const WorkExperience:FC<WorkExperienceProps> = ({ workExperience }) => {
+    const { companyName, city, state, startDate, endDate, title, responsibilities } = workExperience
+
     const orderedResponsibilities : WorkResponsibility[] = responsibilities.sort((responsibilityA, responsibilitlyB) => responsibilityA.order - responsibilitlyB.order);
 
     return (
-        <>
+        <div>
             <h2>{companyName}</h2>
-            {city}, {state} {dateFormatter.format(startDate)} - {endDate ? dateFormatter.format(endDate) : "present"}
             <p><em>{title}</em></p>
+            <p>{dateFormatter.format(startDate)} - {endDate ? dateFormatter.format(endDate) : "present"}</p>
+            <p>{city}, {state}</p>
             <ul>
                 {orderedResponsibilities.map(responsibility => <li key={responsibility.description}>{responsibility.description}</li>)}
             </ul>
-        </>
+        </div>
     )
 }
