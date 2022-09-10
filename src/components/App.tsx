@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 //service imports
 import { PortfolioService } from "../services/PortfolioService";
@@ -86,7 +86,7 @@ function App() : JSX.Element {
   const [scrollMarginTop, setScrollMarginTop] = useState<number>(-1);
 
   //event handler functions
-  const setActiveSectionNav = () => {
+  const setActiveSectionNav = useCallback(() => {
     const sectionNavsCopy = {...sectionNavs};
 
     const windowPosition = window.scrollY + scrollMarginTop;
@@ -109,9 +109,9 @@ function App() : JSX.Element {
     }
 
     setSectionNavs(sectionNavsCopy);
-  }
+  }, [scrollMarginTop, sectionNavs])
 
-  const calculateAndSetScrollMarginTop = () => {
+  const calculateAndSetScrollMarginTop = useCallback(() => {
     //determine offset from sticky introduction container
     let introHeight = 0;
 
@@ -126,7 +126,7 @@ function App() : JSX.Element {
 
     console.log("introHeight: ", introHeight)
     setScrollMarginTop(introHeight);
-  }
+  }, [])
   
   //Effects
   useEffect(() => {
@@ -159,13 +159,17 @@ function App() : JSX.Element {
     return () => {
        window.removeEventListener("resize", calculateAndSetScrollMarginTop);
     };
-  }, [])
+  }, [calculateAndSetScrollMarginTop])
 
   useEffect(() => {
     //force event to use new state
     window.removeEventListener("scroll", setActiveSectionNav);
     window.addEventListener("scroll", setActiveSectionNav);
-  }, [scrollMarginTop])
+
+    return () => {
+      window.removeEventListener("scroll", setActiveSectionNav);
+   };
+  }, [scrollMarginTop, setActiveSectionNav])
 
   return (
       <div className="row">
