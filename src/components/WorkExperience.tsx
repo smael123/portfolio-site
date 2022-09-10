@@ -17,7 +17,7 @@ export const WorkExperience:FC<WorkExperienceProps> = ({ workExperience }) => {
     const orderedResponsibilities : WorkResponsibility[] = responsibilities.sort((responsibilityA, responsibilitlyB) => responsibilityA.order - responsibilitlyB.order);
 
     return (
-        <div>
+        <>
             <h2>{companyName}</h2>
             <p><em>{title}</em></p>
             <p>{dateFormatter.format(startDate)} - {endDate ? dateFormatter.format(endDate) : "present"}</p>
@@ -25,6 +25,6 @@ export const WorkExperience:FC<WorkExperienceProps> = ({ workExperience }) => {
             <ul>
                 {orderedResponsibilities.map(responsibility => <li key={responsibility.description}>{responsibility.description}</li>)}
             </ul>
-        </div>
+        </>
     )
 }

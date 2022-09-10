@@ -1,13 +1,43 @@
-@media (min-width: 992px) { 
-    .sticky-container {
+@media (min-width: 1200px) { 
+    .intro-container {
         position: sticky;
         top: 0;
     }
+
+    .section-navs {
+        flex-direction: column!important;
+    }
  }
 
-.container {
+ @media (max-width: 1200px) { 
+    .intro-column {
+        position: sticky;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+   .section-navs {
+        justify-content: center!important;
+    }
+
+    #intro {
+        text-align: center;
+    }
+
+    .portfolio-picture-top {
+        display: none;
+    }
+ }
+
+ .intro-column {
+    background-color: lightblue;
+ }
+
+/* .container {
     padding: 15px;
-}
+} */
 
 .portfolio-picture {
     border-radius: 50%;

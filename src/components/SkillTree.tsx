@@ -11,7 +11,7 @@ export const SkillTree:FC<SkillTreeProps> = ({ skillGroups }) => {
     
     return (
        <div className='row'>
-        {orderedSkillGroups.map(skillGroup => <div key={skillGroup.id} className="col-md-4"><SkillBranch skillGroup={skillGroup} /></div>)}
+        {orderedSkillGroups.map(skillGroup => <div key={skillGroup.id} className="col-md-4 my-2"><SkillBranch skillGroup={skillGroup} /></div>)}
        </div>
     )
 }
