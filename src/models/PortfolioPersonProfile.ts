@@ -6,7 +6,4 @@ export interface PortfolioPersonProfile extends DatabaseDto {
     careerTitle: string,
     pictureSrc?: string,
     profileLinks: BasicHyperLink[]
-    resumeHref?: string,
-    linkedinHref?: string,
-    githubHref?: string
 }

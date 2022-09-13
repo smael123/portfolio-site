@@ -130,21 +130,42 @@ function App() : JSX.Element {
   
   //Effects
   useEffect(() => {
-    //load data from service
-    const portfolioService = new PortfolioService();
+    (async () => {
+      try {
+        //load data from service
+        const portfolioService = new PortfolioService();
 
-    const unorderedWorkExperiences = portfolioService.getWorkExperiences();
-    const orderedWorkExperiences = unorderedWorkExperiences.sort((workExperienceA, workExperienceB) => workExperienceB.startDate.getTime() - workExperienceA.startDate.getTime());
-    
-    const unorderedEducationExperiences = portfolioService.getEducationExperience();
-    const orderedEducationExperiences = unorderedEducationExperiences.sort((educationExperienceA, educationExperienceB) => educationExperienceB.yearOfGraduation - educationExperienceA.yearOfGraduation);
+        const foundProjects = await portfolioService.getProjects();
 
-    setProjects(portfolioService.getProjects());
-    setWorkExperiences(orderedWorkExperiences);
-    setSkillGroups(portfolioService.getSkillGroups());
-    setWorkProjects(portfolioService.getWorkProjects());
-    setPortfolioPersonProfile(portfolioService.getPortfolioPersonProfile());
-    setEducationExperiences(orderedEducationExperiences);
+        setProjects(foundProjects);
+
+        const unorderedWorkExperiences = await portfolioService.getWorkExperiences();
+        console.log(unorderedWorkExperiences);
+        const orderedWorkExperiences = unorderedWorkExperiences.sort((workExperienceA, workExperienceB) => workExperienceB.startDate.getTime() - workExperienceA.startDate.getTime());
+
+        setWorkExperiences(orderedWorkExperiences);
+
+        const foundSkillGroups = await portfolioService.getSkillGroups();
+
+        setSkillGroups(foundSkillGroups);
+
+        const foundWorkProjects = await portfolioService.getWorkProjects();
+
+        setWorkProjects(foundWorkProjects);
+
+        const foundPersonProfile = await portfolioService.getPortfolioPersonProfile();
+
+        setPortfolioPersonProfile(foundPersonProfile);
+
+        const unorderedEducationExperiences = await portfolioService.getEducationExperience();
+        const orderedEducationExperiences = unorderedEducationExperiences.sort((educationExperienceA, educationExperienceB) => educationExperienceB.yearOfGraduation - educationExperienceA.yearOfGraduation);
+
+        setEducationExperiences(orderedEducationExperiences);
+      }
+      catch (ex : any) {
+        console.log(ex.message)
+      }
+    })();
   }, []);
 
   useLayoutEffect(() => {

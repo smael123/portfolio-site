@@ -5,8 +5,10 @@ export interface WorkExperience extends DatabaseDto {
     companyName : string;
     city : string;
     state : string;
-    startDate : Date;
-    endDate? : Date;
+    startDate: Date,
+    endDate? : Date | null,
+    startDateStr : string;
+    endDateStr? : string;
     title: string;
     responsibilities : WorkResponsibility[];
 }
