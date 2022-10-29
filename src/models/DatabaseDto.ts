@@ -1,3 +1,3 @@
 export interface DatabaseDto {
-    readonly id : number;
+    readonly id : string;
 }

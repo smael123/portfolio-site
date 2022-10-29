@@ -14,9 +14,11 @@ export class PortfolioService {
         headers: { ...PortfolioService.corsHeader }
     }
 
+    private static readonly ownerId = 'ismael'
+
     async getProjects() : Promise<Project[]> {
         try {
-            const response = await fetch(`${PortfolioService.baseApiUrl}Project/Personal/`, {
+            const response = await fetch(`${PortfolioService.baseApiUrl}Project?ownerId=ismael&projectType=personal`, {
                 method: "GET",
                 ...PortfolioService.defaultOptions
             })
@@ -34,7 +36,7 @@ export class PortfolioService {
 
     async getWorkExperiences() : Promise<WorkExperience[]> {
         try {
-            const response = await fetch(`${PortfolioService.baseApiUrl}WorkExperience/`, {
+            const response = await fetch(`${PortfolioService.baseApiUrl}WorkExperience?ownerId=ismael`, {
                 method: "GET",
                 ...PortfolioService.defaultOptions
             })
@@ -59,7 +61,7 @@ export class PortfolioService {
 
     async getSkillGroups() : Promise<SkillGroup[]> {
         try {
-            const response = await fetch(`${PortfolioService.baseApiUrl}SkillGroup/`, {
+            const response = await fetch(`${PortfolioService.baseApiUrl}SkillGroup?ownerId=ismael`, {
                 method: "GET",
                 ...PortfolioService.defaultOptions
             })
@@ -77,7 +79,7 @@ export class PortfolioService {
 
     async getWorkProjects() : Promise<Project[]> {
         try {
-            const response = await fetch(`${PortfolioService.baseApiUrl}Project/Work/`, {
+            const response = await fetch(`${PortfolioService.baseApiUrl}Project?ownerId=ismael&projectType=personal`, {
                 method: "GET",
                 ...PortfolioService.defaultOptions
             })
@@ -95,7 +97,7 @@ export class PortfolioService {
 
     async getPortfolioPersonProfile() : Promise<PortfolioPersonProfile> {
         try {
-            const response = await fetch(`${PortfolioService.baseApiUrl}PersonProfile/`, {
+            const response = await fetch(`${PortfolioService.baseApiUrl}PersonProfile?ownerId=ismael`, {
                 method: "GET",
                 ...PortfolioService.defaultOptions
             })
@@ -113,7 +115,7 @@ export class PortfolioService {
 
     async getEducationExperience() : Promise<EducationExperience[]> {
         try {
-            const response = await fetch(`${PortfolioService.baseApiUrl}EducationExperience/`, {
+            const response = await fetch(`${PortfolioService.baseApiUrl}EducationExperience?ownerId=ismael`, {
                 method: "GET",
                 ...PortfolioService.defaultOptions
             })
