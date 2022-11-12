@@ -23,6 +23,11 @@ import { SectionNavs } from "./SectionNavs";
 
 //css imports
 import '../index.css'
+import { IntroductionPlaceholder } from "./placeholders/IntroductionPlaceholder";
+import { EducationExperiencePlaceHolder } from "./placeholders/EducationExperiencePlaceholder";
+import { SkillTreePlaceholder } from "./placeholders/SkillTreePlaceholder";
+import { WorkExperiencePlaceholder } from "./placeholders/WorkExperiencePlaceholder";
+import { ProjectPlaceholder } from "./placeholders/ProjectPlaceholder";
 
 const containerPadding = 15; //may not need this anymore
 
@@ -37,17 +42,17 @@ function App() : JSX.Element {
   const personalProjectsSectionRef = useRef<HTMLElement>(null);
 
   //states
-  const [projects, setProjects] = useState<ProjectModel[]>([]);
-  const [workExperiences, setWorkExperiences] = useState<WorkExperienceModel[]>([]);
-  const [skillGroups, setSkillGroups] = useState<SkillGroup[]>([]);
-  const [workProjects, setWorkProjects] = useState<ProjectModel[]>([]);
+  const [projects, setProjects] = useState<ProjectModel[] | null>(null);
+  const [workExperiences, setWorkExperiences] = useState<WorkExperienceModel[] | null>(null);
+  const [skillGroups, setSkillGroups] = useState<SkillGroup[] | null>(null);
+  const [workProjects, setWorkProjects] = useState<ProjectModel[] | null>(null);
   const [portfolioPersonProfile, setPortfolioPersonProfile] = useState<PortfolioPersonProfile>({
-      id: "1",
+      id: "-1",
       name: "LOADING",
       careerTitle: "LOADING",
       profileLinks: []
   });
-  const [educationExperiences, setEducationExperiences] = useState<EducationExperienceModel[]>([]);
+  const [educationExperiences, setEducationExperiences] = useState<EducationExperienceModel[] | null>(null);
   
   const [sectionNavs, setSectionNavs] = useState<SectionNavDictionary>({
     "skills" : {
@@ -197,7 +202,9 @@ function App() : JSX.Element {
         <div className="col-xl-2 intro-column" ref={introductionColumnRef}>
           <div className="container intro-container" style={{padding: containerPadding}}>
             <section id="intro">
-              <Introduction portfolioPersonProfile={portfolioPersonProfile} />
+              {portfolioPersonProfile.id === '-1' ? 
+                <IntroductionPlaceholder /> : 
+                <Introduction portfolioPersonProfile={portfolioPersonProfile} />}
             </section>
             <hr />
             <SectionNavs sectionNavDictionary={sectionNavs} />
@@ -207,30 +214,85 @@ function App() : JSX.Element {
           <div className="container" style={{padding: containerPadding}}>
             <section id="skills" className="portfolio-section" ref={skillsSectionRef} style={{scrollMarginTop: scrollMarginTop}}>
               <h1>Skills</h1>
-              <SkillTree skillGroups={skillGroups} />
+              {skillGroups ? <SkillTree skillGroups={skillGroups} /> : <SkillTreePlaceholder />}
             </section>
             <section id="education" className="portfolio-section" ref={educationSectionRef} style={{scrollMarginTop: scrollMarginTop}}>
               <h1>Education</h1>
-              {educationExperiences.map(educationExperience => <EducationExperienceComponent key={educationExperience.id} educationExperience={educationExperience} />)}
+              {educationExperiences ? 
+                educationExperiences.map(educationExperience => 
+                  <EducationExperienceComponent key={educationExperience.id} educationExperience={educationExperience} />
+                ) : 
+                  <div className="row">
+                    <div className="col-md-6 my-2"><EducationExperiencePlaceHolder /></div>
+                    <div className="col-md-6 my-2"><EducationExperiencePlaceHolder /></div>
+                  </div>
+              }
             </section>
             <section id="experience" className="portfolio-section" ref={experienceSectionRef} style={{scrollMarginTop: scrollMarginTop}}>
               <h1>Work Experience</h1>
-              {workExperiences.map(workExperience => <WorkExperienceComponent key={workExperience.id} workExperience={workExperience} />)}
+              {workExperiences ? 
+                workExperiences.map(workExperience => 
+                  <WorkExperienceComponent key={workExperience.id} workExperience={workExperience} />
+                ) : 
+                  <div style={{maxWidth: 800}}>
+                    <WorkExperiencePlaceholder />
+                  </div>
+              }
             </section>
             <section id="work-projects" className="portfolio-section" ref={workProjectsSectionRef} style={{scrollMarginTop: scrollMarginTop}}>
               <h1>Work Projects</h1>
               <div className="row">
-                {workProjects.map(project => <div key={project.id} className="col-md-6 my-2"><ProjectComponent project={project} /></div>)}
+                {workProjects ?
+                  workProjects.map(project => 
+                    <div key={project.id} className="col-md-6 my-2">
+                      <ProjectComponent project={project} />
+                    </div>
+                  ) :
+                    <>
+                      <div className="col-md-6 my-2">
+                        <ProjectPlaceholder/>
+                      </div>
+                      <div className="col-md-6 my-2">
+                        <ProjectPlaceholder/>
+                      </div>
+                      <div className="col-md-6 my-2">
+                        <ProjectPlaceholder/>
+                      </div>
+                      <div className="col-md-6 my-2">
+                        <ProjectPlaceholder/>
+                      </div>
+                    </>
+                }
               </div>
             </section>
             <section id="personal-projects" className="portfolio-section" ref={personalProjectsSectionRef} style={{scrollMarginTop: scrollMarginTop}}>
               <h1>Personal Projects</h1>
               <div className="row">
-                {projects.map(project => <div key={project.id} className="col-md-6 my-2"><ProjectComponent project={project}/></div>)}
+                {projects ? projects.map(project => 
+                  <div key={project.id} className="col-md-6 my-2">
+                    <ProjectComponent project={project}/>
+                  </div>
+                ) : 
+                  <>
+                    <div className="col-md-6 my-2">
+                      <ProjectPlaceholder/>
+                    </div>
+                    <div className="col-md-6 my-2">
+                      <ProjectPlaceholder/>
+                    </div>
+                    <div className="col-md-6 my-2">
+                      <ProjectPlaceholder/>
+                    </div>
+                    <div className="col-md-6 my-2">
+                      <ProjectPlaceholder/>
+                    </div>
+                  </>
+                }
               </div>
             </section>
             <div style={{textAlign: "center"}}>
-              {portfolioPersonProfile.pictureSrc && <img className='portfolio-picture portfolio-picture-bottom' src={portfolioPersonProfile.pictureSrc} alt="My portrait." />}
+              {portfolioPersonProfile.pictureSrc && 
+                <img className='portfolio-picture portfolio-picture-bottom' src={portfolioPersonProfile.pictureSrc} alt="My portrait." />}
             </div>
           </div>
         </div>
