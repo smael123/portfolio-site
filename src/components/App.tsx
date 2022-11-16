@@ -293,6 +293,7 @@ function App() : JSX.Element {
             <div style={{textAlign: "center"}}>
               {portfolioPersonProfile.pictureSrc && 
                 <img className='portfolio-picture portfolio-picture-bottom' src={portfolioPersonProfile.pictureSrc} alt="My portrait." />}
+                <p>Favicon and manifest.json icons created by <a href="https://commons.wikimedia.org/wiki/File:Icon_In_Use.png">Reneman</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons</p>
             </div>
           </div>
         </div>
