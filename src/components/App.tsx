@@ -28,6 +28,7 @@ import { EducationExperiencePlaceHolder } from "./placeholders/EducationExperien
 import { SkillTreePlaceholder } from "./placeholders/SkillTreePlaceholder";
 import { WorkExperiencePlaceholder } from "./placeholders/WorkExperiencePlaceholder";
 import { ProjectPlaceholder } from "./placeholders/ProjectPlaceholder";
+import { MyToast } from "./MyToast";
 
 const containerPadding = 15; //may not need this anymore
 
@@ -87,6 +88,12 @@ function App() : JSX.Element {
     },
   });
 
+  const [toastObject, setToastObject] = useState({
+    title: "",
+    body: "",
+    isToastVisible: false
+  })
+
   //set to negative 1 so that the scrollMarginTop dependency effect is called on pageload even when window width is greater than 1200
   const [scrollMarginTop, setScrollMarginTop] = useState<number>(-1);
 
@@ -129,7 +136,6 @@ function App() : JSX.Element {
       }
     }
 
-    console.log("introHeight: ", introHeight)
     setScrollMarginTop(introHeight);
   }, [])
   
@@ -145,7 +151,6 @@ function App() : JSX.Element {
         setProjects(foundProjects);
 
         const unorderedWorkExperiences = await portfolioService.getWorkExperiences();
-        console.log(unorderedWorkExperiences);
         const orderedWorkExperiences = unorderedWorkExperiences.sort((workExperienceA, workExperienceB) => workExperienceB.startDate.getTime() - workExperienceA.startDate.getTime());
 
         setWorkExperiences(orderedWorkExperiences);
@@ -168,7 +173,12 @@ function App() : JSX.Element {
         setEducationExperiences(orderedEducationExperiences);
       }
       catch (ex : any) {
-        console.log(ex.message)
+        console.error(ex.message);
+        setToastObject({
+          title: "Error",
+          body: ex.message,
+          isToastVisible: true
+        })
       }
     })();
   }, []);
@@ -198,6 +208,19 @@ function App() : JSX.Element {
   }, [scrollMarginTop, setActiveSectionNav])
 
   return (
+    <div>
+      <MyToast 
+        title={toastObject.title}
+        body={toastObject.body}
+        isToastVisible={toastObject.isToastVisible}
+        closeToast={() => { 
+          setToastObject({
+            title: "",
+            body: "",
+            isToastVisible: false
+          })
+        }}
+      />
       <div className="row">
         <div className="col-xl-2 intro-column" ref={introductionColumnRef}>
           <div className="container intro-container" style={{padding: containerPadding}}>
@@ -298,6 +321,7 @@ function App() : JSX.Element {
           </div>
         </div>
       </div>
+    </div>
   );
 }
 
