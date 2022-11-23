@@ -3,23 +3,23 @@ import { PortfolioPersonProfile } from "../models/PortfolioPersonProfile";
 import { Project } from "../models/Project";
 import { SkillGroup } from "../models/SkillGroup";
 import { WorkExperience } from "../models/WorkExperience";
-import { AppConfig } from "../appConfigInterface";
-import developmentAppConfig from '../appconfig-development';
 
 export class PortfolioService {
-    private readonly _appConfig : AppConfig
     private readonly _defaultFetchOptions;
 
     constructor() {
-        this._appConfig = developmentAppConfig;
+        if (!process.env.REACT_APP_BASE_API_URL) {
+            throw Error("Process environment REACT_APP_BASE_API_URL is undefined");
+        }
+
         this._defaultFetchOptions = {
             mode: "cors" as RequestMode,
-            headers: { 'Access-Control-Allow-Origin': this._appConfig.baseApiUrl  }
+            headers: { 'Access-Control-Allow-Origin': process.env.REACT_APP_BASE_API_URL  }
         }
     }
 
     async getProjects() : Promise<Project[]> {
-        const response = await fetch(`${this._appConfig.baseApiUrl}Project?ownerId=${this._appConfig.ownerId}&projectType=personal`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_API_URL}Project?ownerId=${process.env.REACT_APP_OWNER_ID}&projectType=personal`, {
             method: "GET",
             ...this._defaultFetchOptions
         })
@@ -32,7 +32,7 @@ export class PortfolioService {
     }
 
     async getWorkExperiences() : Promise<WorkExperience[]> {
-        const response = await fetch(`${this._appConfig.baseApiUrl}WorkExperience?ownerId=${this._appConfig.ownerId}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_API_URL}WorkExperience?ownerId=${process.env.REACT_APP_OWNER_ID}`, {
             method: "GET",
             ...this._defaultFetchOptions
         })
@@ -52,7 +52,7 @@ export class PortfolioService {
     }
 
     async getSkillGroups() : Promise<SkillGroup[]> {      
-        const response = await fetch(`${this._appConfig.baseApiUrl}SkillGroup?ownerId=${this._appConfig.ownerId}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_API_URL}SkillGroup?ownerId=${process.env.REACT_APP_OWNER_ID}`, {
             method: "GET",
             ...this._defaultFetchOptions
         })
@@ -65,7 +65,7 @@ export class PortfolioService {
     }
 
     async getWorkProjects() : Promise<Project[]> {
-        const response = await fetch(`${this._appConfig.baseApiUrl}Project?ownerId=${this._appConfig.ownerId}&projectType=personal`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_API_URL}Project?ownerId=${process.env.REACT_APP_OWNER_ID}&projectType=personal`, {
             method: "GET",
             ...this._defaultFetchOptions
         })
@@ -78,7 +78,7 @@ export class PortfolioService {
     }
 
     async getPortfolioPersonProfile() : Promise<PortfolioPersonProfile> {
-        const response = await fetch(`${this._appConfig.baseApiUrl}PersonProfile?ownerId=${this._appConfig.ownerId}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_API_URL}PersonProfile?ownerId=${process.env.REACT_APP_OWNER_ID}`, {
             method: "GET",
             ...this._defaultFetchOptions
         })
@@ -91,7 +91,7 @@ export class PortfolioService {
     }
 
     async getEducationExperience() : Promise<EducationExperience[]> {
-        const response = await fetch(`${this._appConfig.baseApiUrl}EducationExperience?ownerId=${this._appConfig.ownerId}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_API_URL}EducationExperience?ownerId=${process.env.REACT_APP_OWNER_ID}`, {
             method: "GET",
             ...this._defaultFetchOptions
         })
