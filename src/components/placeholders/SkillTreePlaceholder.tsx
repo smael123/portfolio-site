@@ -6,7 +6,9 @@ export const SkillTreePlaceholder: FC = () => {
             <div className="col-md-4 my-2">
                 <div className='card'>
                     <div className="card-body placeholder-glow">
-                        <h2 className='card-title placeholder-glow'></h2>
+                        <h2 className='card-title placeholder-glow'>
+                            <span className="col-12 placeholder"></span>
+                        </h2>
                         <div className='card-text placeholder-glow'>
                             <p className="placeholder col-12"></p>
                             <p className="placeholder col-12"></p>
@@ -19,7 +21,9 @@ export const SkillTreePlaceholder: FC = () => {
             <div className="col-md-4 my-2">
                 <div className='card'>
                     <div className="card-body placeholder-glow">
-                        <h2 className='card-title placeholder-glow'></h2>
+                        <h2 className='card-title placeholder-glow'>
+                            <span className="col-12 placeholder"></span>
+                        </h2>
                         <div className='card-text placeholder-glow'>
                             <p className="placeholder col-12"></p>
                             <p className="placeholder col-12"></p>
@@ -32,7 +36,9 @@ export const SkillTreePlaceholder: FC = () => {
             <div className="col-md-4 my-2">
                 <div className='card'>
                     <div className="card-body placeholder-glow">
-                        <h2 className='card-title placeholder-glow'></h2>
+                        <h2 className='card-title placeholder-glow'>
+                            <span className="col-12 placeholder"></span>
+                        </h2>
                         <div className='card-text placeholder-glow'>
                             <p className="placeholder col-12"></p>
                             <p className="placeholder col-12"></p>
@@ -45,7 +51,9 @@ export const SkillTreePlaceholder: FC = () => {
             <div className="col-md-4 my-2">
                 <div className='card'>
                     <div className="card-body placeholder-glow">
-                        <h2 className='card-title placeholder-glow'></h2>
+                        <h2 className='card-title placeholder-glow'>
+                            <span className="col-12 placeholder"></span>
+                        </h2>
                         <div className='card-text placeholder-glow'>
                             <p className="placeholder col-12"></p>
                             <p className="placeholder col-12"></p>
@@ -58,7 +66,9 @@ export const SkillTreePlaceholder: FC = () => {
             <div className="col-md-4 my-2">
                 <div className='card'>
                     <div className="card-body placeholder-glow">
-                        <h2 className='card-title placeholder-glow'></h2>
+                        <h2 className='card-title placeholder-glow'>
+                            <span className="col-12 placeholder"></span>
+                        </h2>
                         <div className='card-text placeholder-glow'>
                             <p className="placeholder col-12"></p>
                             <p className="placeholder col-12"></p>
@@ -71,7 +81,9 @@ export const SkillTreePlaceholder: FC = () => {
             <div className="col-md-4 my-2">
                 <div className='card'>
                     <div className="card-body placeholder-glow">
-                        <h2 className='card-title placeholder-glow'></h2>
+                        <h2 className='card-title placeholder-glow'>
+                            <span className="col-12 placeholder"></span>
+                        </h2>
                         <div className='card-text placeholder-glow'>
                             <p className="placeholder col-12"></p>
                             <p className="placeholder col-12"></p>

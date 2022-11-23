@@ -1,6 +1,4 @@
 import { FC } from 'react';
-import { Nav } from 'react-bootstrap';
-import { SectionNav } from '../component-models/SectionNav';
 import { SectionNavDictionary } from '../component-models/SectionNavDictionary';
 
 interface SectionNavsProps {
